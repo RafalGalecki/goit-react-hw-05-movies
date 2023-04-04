@@ -1,15 +1,32 @@
-import React from "react";
+import { useState, useEffect } from 'react';
+//import { useLocation } from "react-router-dom";
+import getTrendingMovies from 'services/api';
 
 const Home = () => {
-    let movieTitle = 'Example'
-    let movieId = 1;
-    return (
-      <>
-        <h2>Trending today</h2>
-        <ul>
-          <li id={movieId}>{movieTitle}</li>
-        </ul>
-      </>
-    );
-}
+  const [movies, setMovies] = useState([]);
+  //const location = useLocation();
+
+  useEffect(() => {
+    const fetchMovies = async () => {
+      const response = await getTrendingMovies();
+      console.log('response', response);
+      if (response !== null) {
+        setMovies(response);
+      } else {
+        setMovies([]);
+        console.log('movies', movies);
+      }
+    };
+    fetchMovies();
+    
+  }, []);
+  return (
+    <>
+      <h2>Trending today</h2>
+      <ul>
+        {movies && movies.map(({movieId, movieTitle}) => <li id={movieId}>{movieTitle}</li>)}
+      </ul>
+    </>
+  );
+};
 export default Home;

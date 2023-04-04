@@ -1,71 +1,49 @@
 import axios from 'axios';
 
 export const API_KEY = '7e626872ba2c457d969115031d94d6fb';
-export const BASE_URL = 'https://api.themoviedb.org/3/';
+export const BASE_URL = 'https://api.themoviedb.org/3';
 export const PAGE = 1;
 
 
+// This is tha main fetch fuction
+const fetchTMDB = (specifiedUrl, myParams) => {
+  return axios.get(BASE_URL + specifiedUrl, {
+    params: {
+      api_key: API_KEY,
+      language: 'en-US',
+      page: 1,
+      ...myParams,
+    },
+  }).then(response => {
+    return response;
+  }).catch(error => {
+    console.log('error', error)
+  })
+}
 
-//fetch for getting movies based on input for searching
-export const getSearchedMovies = async (searchInput, PAGE) => {
-  const urlForSearching = ''.concat(
-    BASE_URL,
-    'search/movie?api_key=',
-    API_KEY,
-    '&query=',
-    searchInput,
-    `&page=${PAGE}`
-  );
+const getTrendingMovies = async () => {
+  const specifiedUrl = '/trending/movie/day';
+  const myParams = {};
+  const response = await fetchTMDB(specifiedUrl, myParams);
+  if (response === null) {
+    return null;
+  }
+  // let movies = [];
+  // response.data.results.forEach(movie => {
+  //   return movies.push({ movieId: movie.id, movieTitle: movie.title })
+  // });
+  // return movies;
+  let movies = [];
+  getMoviesData(response.data.results, movies);
+  return movies;
+}
 
-  const response = await axios
-    .get(urlForSearching)
-    .then(function (response) {
-      // handle success
-      //refreshRendering();
+const getMoviesData = (response, movies) => {
+  response.forEach(movie => {
+    return movies.push({ movieId: movie.id, movieTitle: movie.title });
+  })
+}
 
-      if (response.data.results.length !== 0) {
-        //warning.textContent = '';
-        return response;
 
-      } else {
-        // if no results found - show warning
-        //warning.textContent = 'Search result not successful. Enter the correct movie name and try again.';
-       
-      }
-
-    })
-    .catch(function (error) {
-      // handle error
-      console.log(error);
-      // Notiflix.Notify.error(
-      //   'We are sorry, but getting data is impossible in that moment'
-      // );
-    });
-  console.log('Input Response', response);
-  return response;
-};
-
-//fetch for getting movies for initial website based on daily trending
-export const getInitialMovies = async () => {
-  const urlForInitialMovies = ''.concat(
-    BASE_URL,
-    'trending/movie/day?api_key=',
-    API_KEY,
-    `&page=${PAGE}`
-  );
-
-  const response = await axios
-    .get(urlForInitialMovies)
-    .then(function (response) {
-      // handle success
-      return response;
-    })
-    .catch(function (error) {
-      // handle error
-      alert(
-        'We are sorry, but getting data is impossible in that moment'
-      );
-    });
-
-  return response;
-};
+//export {getTrendingMovies, getQueryMovies}
+export default getTrendingMovies;
