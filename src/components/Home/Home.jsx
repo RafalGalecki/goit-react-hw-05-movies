@@ -14,7 +14,6 @@ const Home = () => {
         setMovies(response);
       } else {
         setMovies([]);
-        console.log('movies', movies);
       }
     };
     fetchMovies();
