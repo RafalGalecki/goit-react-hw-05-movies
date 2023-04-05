@@ -28,11 +28,6 @@ const getTrendingMovies = async () => {
   if (response === null) {
     return null;
   }
-  // let movies = [];
-  // response.data.results.forEach(movie => {
-  //   return movies.push({ movieId: movie.id, movieTitle: movie.title })
-  // });
-  // return movies;
   let movies = [];
   getMoviesData(response.data.results, movies);
   return movies;
@@ -44,6 +39,19 @@ const getMoviesData = (response, movies) => {
   })
 }
 
+const getQueryMovies = async query => {
+  const myParams = {
+    query: query,
+    page: 1,
+  };
+  const response = await fetchTMDB('/search/movie', myParams);
+  if (response === null) {
+    return null;
+  }
+  let movies = [];
+  getMoviesData(response.data.results);
+  return movies;
+};
 
-//export {getTrendingMovies, getQueryMovies}
-export default getTrendingMovies;
+export {getTrendingMovies, getQueryMovies}
+//export default getTrendingMovies;
