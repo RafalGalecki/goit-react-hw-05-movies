@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const Movies = ({ query }) => {
   const [filter, setFilter] = useState('');
+  const [movies, setMovies] = useState();
 
   const handleSubmit = event => {
     event.preventDefault();
