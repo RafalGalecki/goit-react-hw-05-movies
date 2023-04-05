@@ -26,10 +26,13 @@ export const Nav = styled.nav`
 `;
 
 const activeNav = active => {
-  if (active) {
-    return 'color: red';
-  } else {
-    return 'color: black';
+  switch (active) {
+    case 'on':
+      return 'color: orange';
+    case 'off':
+      return 'color: black';
+    default:
+      return 'color: black'
   }
 };
 

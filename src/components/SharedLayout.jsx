@@ -7,17 +7,11 @@ export const SharedLayout = () => {
     <Container>
       <Header>
         <Nav>
-          <Link
-            active={
-              location.pathname.startsWith('/') ? 'true' : 'false'
-            }
-            to="/"
-            end
-          >
+          <Link active={location.pathname === '/' ? 'on' : 'off'} to="/" end>
             Home
           </Link>
           <Link
-            active={location.pathname === '/movies' ? 'true' : 'false'}
+            active={location.pathname.startsWith('/movies') ? 'on' : 'off'}
             to="/movies"
           >
             Movies

@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getTrendingMovies } from 'services/api';
+import MoviesList from 'components/MoviesList';
+import MoviesListItem from 'components/MoviesListItem';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -17,15 +19,14 @@ const Home = () => {
     fetchMovies();
   }, []);
   return (
-    <>
-      <h2>Trending today</h2>
-      <ul>
+    <main>
+      <MoviesList title="Trending today">
         {movies &&
           movies.map(({ movieId, movieTitle }) => (
-            <li id={movieId}>{movieTitle}</li>
+            <MoviesListItem key={movieId} movieTitle={movieTitle} />
           ))}
-      </ul>
-    </>
+      </MoviesList>
+    </main>
   );
 };
 
