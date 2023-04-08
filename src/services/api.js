@@ -49,7 +49,7 @@ const getQueryMovies = async query => {
     return null;
   }
   let movies = [];
-  getMoviesData(response.data.results);
+  getMoviesData(response.data.results, movies);
   return movies;
 };
 
