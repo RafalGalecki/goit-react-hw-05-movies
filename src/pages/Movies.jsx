@@ -42,7 +42,7 @@ const Movies = ({ query }) => {
             ))}
         </MoviesList>
       ) : (
-        <div>
+        <div style={{marginTop: '200px'}}>
           <p>There is no movie in TMDB of the title you entered</p>
         </div>
       )}

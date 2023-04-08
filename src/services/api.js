@@ -6,8 +6,8 @@ export const PAGE = 1;
 
 
 // This is tha main fetch fuction
-const fetchTMDB = (specifiedUrl, myParams) => {
-  return axios.get(BASE_URL + specifiedUrl, {
+const fetchTMDB = async (urlPath, myParams) => {
+  return axios.get(BASE_URL + urlPath, {
     params: {
       api_key: API_KEY,
       language: 'en-US',
@@ -22,9 +22,7 @@ const fetchTMDB = (specifiedUrl, myParams) => {
 }
 
 const getTrendingMovies = async () => {
-  const specifiedUrl = '/trending/movie/day';
-  const myParams = {};
-  const response = await fetchTMDB(specifiedUrl, myParams);
+  const response = await fetchTMDB('/trending/movie/day');
   if (response === null) {
     return null;
   }
