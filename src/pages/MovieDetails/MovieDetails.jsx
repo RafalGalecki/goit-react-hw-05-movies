@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { getMovieDetails } from 'services/api';
 import { Link } from '../../components/SharedLayout.styled';
 
@@ -50,7 +51,7 @@ const MovieDetails = () => {
             <h5>Additional information</h5>
             <ul>
               <li>
-                <Link to="cast">Cast</Link>
+                <Link to={'movies/' + id + '/cast'}>Cast</Link>
               </li>
               <li>
                 <Link to="reviews">Reviews</Link>
@@ -59,6 +60,9 @@ const MovieDetails = () => {
           </div>
         </>
       )}
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet />
+      </Suspense>
     </main>
   );
 };

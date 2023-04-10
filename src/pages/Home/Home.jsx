@@ -25,7 +25,13 @@ const Home = () => {
       <MoviesList title="Trending today">
         {movies &&
           movies.map(({ movieId, movieTitle }) => (
-            <MoviesListItem key={movieId} movieTitle={movieTitle} to={'movies/' + movieId} from={locaction} movieId={ movieId} />
+            <MoviesListItem
+              key={movieId}
+              movieTitle={movieTitle}
+              to={'movies/' + movieId}
+              from={locaction}
+              movieId={movieId}
+            />
           ))}
       </MoviesList>
     </main>

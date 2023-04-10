@@ -71,5 +71,23 @@ const getMovieDetails = async id => {
   return movieDetails;
 };
 
-export { getTrendingMovies, getQueryMovies, getMovieDetails };
-//export default getTrendingMovies;
+const getMovieCast = async id => {
+  const response = await fetchTMDB(`/movie/${id}/credits`);
+  if (response === null) {
+    return null;
+  }
+  let cast = [];
+  response.data.cast.forEach(star => {
+    const { id, profile_path, name, character } = star;
+    return cast.push({
+      id,
+      srcImg: 'https://image.tmdb.org/t/p/w200' + profile_path,
+      name,
+      character,
+    })
+  })
+  return cast;
+}
+
+export { getTrendingMovies, getQueryMovies, getMovieDetails, getMovieCast };
+
