@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useLocation } from 'react-router-dom';
 import Searchbar from 'components/Searchbar';
 import MoviesList from 'components/MoviesList';
 import MoviesListItem from 'components/MoviesListItem';
 import { getQueryMovies } from 'services/api';
 
-const Movies = ({ query }) => {
+const Movies = () => {
   const [movies, setMovies] = useState();
   const [searchParams, setSearchParams] = useSearchParams();
   const [filter, setFilter] = useState(searchParams.get('query'));
+  const location = useLocation();
   const [isMovie, setIsMovie] = useState(false);
 
   const searcher = filter => {
@@ -37,14 +38,18 @@ const Movies = ({ query }) => {
   return (
     <main>
       <Searchbar filter={filter} searcher={filter => searcher(filter)} />
-      {isMovie === null ?? (
-        <p>No</p>
-      )}
-      { isMovie ? (
-        <MoviesList title="Movies of the title you searched">
+      {isMovie === null ?? <p>No</p>}
+      {isMovie ? (
+        <MoviesList title="Trending today">
           {movies &&
             movies.map(({ movieId, movieTitle }) => (
-              <MoviesListItem key={movieId} movieTitle={movieTitle} />
+              <MoviesListItem
+                key={movieId}
+                movieTitle={movieTitle}
+                to={movieId.toString()}
+                from={location}
+                movieId={movieId}
+              />
             ))}
         </MoviesList>
       ) : (

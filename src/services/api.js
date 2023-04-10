@@ -77,17 +77,35 @@ const getMovieCast = async id => {
     return null;
   }
   let cast = [];
-  response.data.cast.forEach(star => {
-    const { id, profile_path, name, character } = star;
+  response.data.cast.forEach(element => {
+    const { id, profile_path, name, character } = element;
     return cast.push({
       id,
       srcImg: 'https://image.tmdb.org/t/p/w200' + profile_path,
       name,
       character,
-    })
-  })
+    });
+  });
   return cast;
-}
+};
 
-export { getTrendingMovies, getQueryMovies, getMovieDetails, getMovieCast };
+const getMovieReviews = async id => {
+  const response = await fetchTMDB(`/movie/${id}/reviews`);
+  if (response === null) {
+    return null;
+  }
+  let reviews = [];
+  response.data.results.forEach(element => {
+    const { id, author, content } = element;
+    return reviews.push({ id, author, content });
+  });
+  return reviews;
+};
 
+export {
+  getTrendingMovies,
+  getQueryMovies,
+  getMovieDetails,
+  getMovieCast,
+  getMovieReviews,
+};

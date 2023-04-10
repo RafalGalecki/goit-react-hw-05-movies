@@ -51,7 +51,7 @@ const MovieDetails = () => {
             <h5>Additional information</h5>
             <ul>
               <li>
-                <Link to={'movies/' + id + '/cast'}>Cast</Link>
+                <Link to="cast">Cast</Link>
               </li>
               <li>
                 <Link to="reviews">Reviews</Link>
