@@ -21,11 +21,14 @@ const Movies = ({ query }) => {
     setSearchParams({ query: filter });
     const getMovies = async () => {
       const response = await getQueryMovies(filter);
+      console.log('RES', response);
       if (response !== null) {
         setMovies(response);
         setIsMovie(true);
-      } else {
+      }
+      if (response.length === 0) {
         setIsMovie(false);
+        console.log('ZERO');
       }
     };
     getMovies();
@@ -34,16 +37,19 @@ const Movies = ({ query }) => {
   return (
     <main>
       <Searchbar filter={filter} searcher={filter => searcher(filter)} />
-      {isMovie ? (
-        <MoviesList title="Search The Movie DataBase for any movie title">
+      {isMovie === null ?? (
+        <p>No</p>
+      )}
+      { isMovie ? (
+        <MoviesList title="Movies of the title you searched">
           {movies &&
             movies.map(({ movieId, movieTitle }) => (
               <MoviesListItem key={movieId} movieTitle={movieTitle} />
             ))}
         </MoviesList>
       ) : (
-        <div style={{marginTop: '200px'}}>
-          <p>There is no movie in TMDB of the title you entered</p>
+        <div style={{ marginTop: '100px' }}>
+          <p>Please type the movie's title to search </p>
         </div>
       )}
     </main>

@@ -19,6 +19,7 @@ const Searchbar = ({ searcher }) => {
         type="search"
         name="query"
         value={filter}
+        placeholder="Enter a movie title"
         onChange={event => handleChange(event)}
       />
       <button type="submit">Search</button>
