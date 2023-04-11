@@ -4,6 +4,7 @@ import { nanoid } from 'nanoid';
 import { getMovieCast } from 'services/api';
 import CastElement from 'components/CastElement';
 import { Container } from './SharedLayout.styled';
+import Loader from './Loader/Loader';
 
 const Cast = () => {
   const [cast, setCast] = useState([]);
@@ -26,27 +27,28 @@ const Cast = () => {
   }, [id]);
 
   return (
-    <Container>
-      {!!isLoading ? (
-        <div>Loading...</div>
-      ) : cast.length > 0 ? (
-        <ul>
-          {cast.map(element => {
-            return (
-              <CastElement
-                key={element.id + nanoid()}
-                srcImg={element.srcImg}
-                name={element.name}
-                character={element.character}
-              />
-            );
-          })}
-        </ul>
-      ) : (
-        <div>Cast not found</div>
-      )}
-      
-    </Container>
+    
+      <Container>
+        {!!isLoading ? (
+          <Loader/>
+        ) : cast.length > 0 ? (
+          <ul>
+            {cast.map(element => {
+              return (
+                <CastElement
+                  key={element.id + nanoid()}
+                  srcImg={element.srcImg}
+                  name={element.name}
+                  character={element.character}
+                />
+              );
+            })}
+          </ul>
+        ) : (
+          <div>Cast not found</div>
+        )}
+      </Container>
+    
   );
 };
 

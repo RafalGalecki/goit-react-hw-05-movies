@@ -3,6 +3,7 @@ import { useParams, useLocation } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 import { getMovieDetails } from 'services/api';
 import { Link } from '../../components/SharedLayout.styled';
+import Loader from '../../components/Loader/Loader';
 
 const MovieDetails = () => {
   const [movieDetails, setMovieDetails] = useState(null);
@@ -28,15 +29,16 @@ const MovieDetails = () => {
       {movieDetails && (
         <>
           <div>
-            {!movieDetails.posterPath.includes(null) ? (
-              <img
-                src={movieDetails.posterPath}
-                alt={`${movieDetails.title}'s poster`}
-              />
-            ) : (
-              <p>No poster yet.</p>
-            )}
-
+            <div>
+              {!movieDetails.posterPath.includes(null) ? (
+                <img
+                  src={movieDetails.posterPath}
+                  alt={`${movieDetails.title}'s poster`}
+                />
+              ) : (
+                <p>No poster yet.</p>
+              )}
+            </div>
             <div>
               <h3>
                 {movieDetails.title} ({movieDetails.releaseDate})
@@ -65,7 +67,7 @@ const MovieDetails = () => {
           </div>
         </>
       )}
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
     </main>

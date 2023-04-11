@@ -1,6 +1,7 @@
 import { Outlet, useLocation } from 'react-router-dom';
 import { Suspense } from 'react';
 import { Container, Header, Nav, Link } from './SharedLayout.styled';
+import Loader from './Loader/Loader';
 
 export const SharedLayout = () => {
   const location = useLocation();
@@ -19,7 +20,7 @@ export const SharedLayout = () => {
           </Link>
         </Nav>
       </Header>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
     </Container>

@@ -40,7 +40,7 @@ const Movies = () => {
       <Searchbar filter={filter} searcher={filter => searcher(filter)} />
       {isMovie === null ?? <p>No</p>}
       {isMovie ? (
-        <MoviesList title="Trending today">
+        <MoviesList>
           {movies &&
             movies.map(({ movieId, movieTitle }) => (
               <MoviesListItem
