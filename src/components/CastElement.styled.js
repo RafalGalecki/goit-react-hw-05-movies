@@ -4,6 +4,10 @@ export const Portrait = styled.div`
   max-width: 160px;
   background-color: grey;
   box-shadow: 0px 6px 3px -2px rgba(0, 0, 0, 0.36);
+  transition-property: transform;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
   &:hover {
     transform: scale(1.03);
     transform: box-shadow;
@@ -18,12 +22,14 @@ export const Role = styled.div`
 `;
 
 export const CastGridItem = styled.li`
-
   flex-basis: calc((100% - 15px * 5) / 6);
   display: flex;
   flex-direction: column;
-
-  
+  @media screen and (min-width: 480px) {
+  }
+  @media screen and (min-width: 768px) {
+  }
+  @media screen and (min-width: 1140px) {
   }
 `;
 export const Placeholder = styled.div`

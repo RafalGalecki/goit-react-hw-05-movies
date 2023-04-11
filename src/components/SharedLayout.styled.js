@@ -41,10 +41,13 @@ const activeNav = active => {
 
 export const Link = styled(NavLink)`
   text-decoration: none;
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
   &:hover,
   &:focus {
     color: blue;
-    
   }
   &:not(:hover, :focus) {
     ${({ active }) => activeNav(active)}

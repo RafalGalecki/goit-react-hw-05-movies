@@ -27,7 +27,6 @@ export const Button = styled.button`
   text-align: center;
   height: 100%;
   width: 100px;
-  
 
   padding: 0 20px;
   background-color: orange;
@@ -43,6 +42,10 @@ export const Button = styled.button`
   box-shadow: inset 3px 6px 16px -8px rgba(249, 243, 232, 0.9),
     inset -2px -2px 8px 1px rgba(77, 57, 19, 0.75),
     4px 4px 6px rgba(58, 43, 12, 0.22);
+  transition-property: box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
   &:hover {
     box-shadow: inset 2px 2px 3px rgba(77, 57, 19, 0.75),
       inset -2px -2px 4px rgba(249, 243, 232, 0.6);
