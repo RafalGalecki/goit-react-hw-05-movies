@@ -28,6 +28,7 @@ const getTrendingMovies = async () => {
   if (response === null) {
     return null;
   }
+  console.log('FULL RESPONSE', response);
   let movies = [];
   handleMoviesData(response.data.results, movies);
   return movies;
@@ -58,13 +59,14 @@ const getMovieDetails = async id => {
   if (response === null) {
     return null;
   }
-  const { poster_path, title, release_date, vote_average, overview, genres } =
+  const { poster_path, title, release_date, vote_average, vote_count, overview, genres } =
     response.data;
   const movieDetails = {
     posterPath: 'https://image.tmdb.org/t/p/w300' + poster_path,
     title,
     releaseDate: `${new Date(release_date).getFullYear()}`,
     voteAverage: vote_average,
+    voteCount: vote_count,
     overview,
     genres,
   };

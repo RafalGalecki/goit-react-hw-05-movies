@@ -4,6 +4,7 @@ import { Outlet } from 'react-router-dom';
 import { getMovieDetails } from 'services/api';
 import { Link } from '../../components/SharedLayout.styled';
 import Loader from '../../components/Loader/Loader';
+import css from './MovieDetails.module.css';
 
 const MovieDetails = () => {
   const [movieDetails, setMovieDetails] = useState(null);
@@ -25,11 +26,16 @@ const MovieDetails = () => {
 
   return (
     <main>
-      <Link to={location.state ? location.state.from : '/'}>&lt; Go back</Link>
+      <Link
+        className={[css.movie__link]}
+        to={location.state ? location.state.from : '/'}
+      >
+        &lt; Go back
+      </Link>
       {movieDetails && (
         <>
-          <div>
-            <div>
+          <div className={[css.movie__card]}>
+            <div className={[css.movie__poster]}>
               {!movieDetails.posterPath.includes(null) ? (
                 <img
                   src={movieDetails.posterPath}
@@ -39,22 +45,29 @@ const MovieDetails = () => {
                 <p>No poster yet.</p>
               )}
             </div>
-            <div>
+            <div className={[css.movie__desc]}>
               <h3>
                 {movieDetails.title} ({movieDetails.releaseDate})
               </h3>
-              <p>User score: {Math.round(movieDetails.voteAverage * 10)}%</p>
-              <h4>Overview</h4>
-              <p>{movieDetails.overview}</p>
-              <h4>Genres</h4>
-              <ul>
-                {movieDetails.genres.map(element => (
-                  <li key={element.id}>{element.name}</li>
-                ))}
-              </ul>
+              <h4 className={[css.movie__score]}>
+                User score: {Math.round(movieDetails.voteAverage * 10)}% /
+                Votes: {movieDetails.voteCount}
+              </h4>
+              <div>
+                <h4>Overview</h4>
+                <p>{movieDetails.overview}</p>
+              </div>
+              <div>
+                <h4>Genres</h4>
+                <ul className={[css.movie__genres]}>
+                  {movieDetails.genres.map(element => (
+                    <li key={element.id}>{element.name}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
-          <div>
+          <div className={[css.movie__additions]}>
             <h5>Additional information</h5>
             <ul>
               <li>

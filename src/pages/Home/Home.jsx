@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { getTrendingMovies } from 'services/api';
 import MoviesList from 'components/MoviesList';
-import MoviesListItem from 'components/MoviesListItem';
+import MoviesListElement from 'components/MoviesListElement';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -25,7 +25,7 @@ const Home = () => {
       <MoviesList title="Trending today">
         {movies &&
           movies.map(({ movieId, movieTitle }) => (
-            <MoviesListItem
+            <MoviesListElement
               key={movieId}
               movieTitle={movieTitle}
               to={'movies/' + movieId}

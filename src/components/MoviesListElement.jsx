@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from './SharedLayout.styled';
 
-const MoviesListItem = ({ movieId, movieTitle, to, from }) => {
+const MoviesListElement = ({ movieId, movieTitle, to, from }) => {
   return (
     <li key={movieId}>
       <Link to={`${to}`} state={{from: from}}>{movieTitle}</Link>
@@ -9,4 +9,4 @@ const MoviesListItem = ({ movieId, movieTitle, to, from }) => {
   );
 };
 
-export default MoviesListItem;
+export default MoviesListElement;

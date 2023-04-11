@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react';
 import { useSearchParams, useLocation } from 'react-router-dom';
 import Searchbar from 'components/Searchbar';
 import MoviesList from 'components/MoviesList';
-import MoviesListItem from 'components/MoviesListItem';
+import MoviesListElement from 'components/MoviesListElement';
 import { getQueryMovies } from 'services/api';
 
 const Movies = () => {
-  const [movies, setMovies] = useState();
+  const [movies, setMovies] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const [filter, setFilter] = useState(searchParams.get('query'));
   const location = useLocation();
@@ -38,12 +38,13 @@ const Movies = () => {
   return (
     <main>
       <Searchbar filter={filter} searcher={filter => searcher(filter)} />
-      {isMovie === null ?? <p>No</p>}
-      {isMovie ? (
+      {!isMovie && <div>
+        <h4>Search The Movie DataBase for movies</h4>
+      </div>}
         <MoviesList>
           {movies &&
             movies.map(({ movieId, movieTitle }) => (
-              <MoviesListItem
+              <MoviesListElement
                 key={movieId}
                 movieTitle={movieTitle}
                 to={movieId.toString()}
@@ -52,11 +53,7 @@ const Movies = () => {
               />
             ))}
         </MoviesList>
-      ) : (
-        <div style={{ marginTop: '100px' }}>
-          <p>Please type the movie's title to search </p>
-        </div>
-      )}
+      
     </main>
   );
 };

@@ -7,11 +7,11 @@ import { Container } from './SharedLayout.styled';
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
   const { id } = useParams();
-  //const [isLoading, setIsLoading] = useState(false);
+  
 
   useEffect(() => {
     const getReviews = async () => {
-      //setIsLoading(true);
+      
       const response = await getMovieReviews(id);
       if (response !== null) {
         setReviews(response);
@@ -19,7 +19,7 @@ const Reviews = () => {
       } else {
         setReviews([]);
       }
-      //setIsLoading(false);
+      
     };
     getReviews();
   }, [id]);

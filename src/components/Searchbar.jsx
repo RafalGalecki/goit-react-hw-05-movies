@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import {Form, Input, Button} from './Searchbar.styled'
 
 const Searchbar = ({ searcher }) => {
   const [filter, setFilter] = useState('');
@@ -14,16 +15,16 @@ const Searchbar = ({ searcher }) => {
   };
 
   return (
-    <form onSubmit={event => handleSubmit(event)}>
-      <input
+    <Form onSubmit={event => handleSubmit(event)}>
+      <Input
         type="search"
         name="query"
         value={filter}
         placeholder="Enter a movie title"
         onChange={event => handleChange(event)}
       />
-      <button type="submit">Search</button>
-    </form>
+      <Button type="submit">Search</Button>
+    </Form>
   );
 };
 

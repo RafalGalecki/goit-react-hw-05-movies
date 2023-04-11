@@ -1,17 +1,24 @@
 import React from 'react';
-
+import { Portrait, Role, CastGridItem, Placeholder } from './CastElement.styled';
 
 const CastElement = ({ id, srcImg, name, character }) => {
   return (
-    <li>
+    <CastGridItem>
       {!srcImg.includes(null) ? (
-        <img src={srcImg} alt={`${name}'s portrait`} />
+        <Portrait>
+          <img src={srcImg} alt={`${name}'s portrait`} />
+        </Portrait>
       ) : (
-        <p>No image yet.</p>
+        <Placeholder>
+          <p>No image yet.</p>
+        </Placeholder>
       )}
-      <p>{name}</p>
-      <p>Character: {character}</p>
-    </li>
+      <Role>
+        <p>{name}</p>
+        <p>as:</p>
+        <p>{character}</p>
+      </Role>
+    </CastGridItem>
   );
 };
 export default CastElement;
