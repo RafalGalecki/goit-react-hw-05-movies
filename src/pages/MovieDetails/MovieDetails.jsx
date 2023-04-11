@@ -28,10 +28,15 @@ const MovieDetails = () => {
       {movieDetails && (
         <>
           <div>
-            <img
-              src={movieDetails.posterPath}
-              alt={`${movieDetails.title}'s poster`}
-            />
+            {!movieDetails.posterPath.includes(null) ? (
+              <img
+                src={movieDetails.posterPath}
+                alt={`${movieDetails.title}'s poster`}
+              />
+            ) : (
+              <p>No poster yet.</p>
+            )}
+
             <div>
               <h3>
                 {movieDetails.title} ({movieDetails.releaseDate})

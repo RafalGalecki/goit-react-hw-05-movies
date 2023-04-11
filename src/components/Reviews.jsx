@@ -30,11 +30,13 @@ const Reviews = () => {
         <ul>
           {reviews.map(element => {
             return (
-              <ReviewsElement
-                key={element.id}
-                author={element.author}
-                content={element.content}
-              />
+            
+                <ReviewsElement
+                  key={element.id}
+                  author={element.author}
+                  content={element.content}
+                />
+              
             );
           })}
         </ul>

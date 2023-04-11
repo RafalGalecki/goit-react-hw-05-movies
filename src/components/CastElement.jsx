@@ -3,7 +3,11 @@ import React from 'react';
 const CastElement = ({ srcImg, name, character }) => {
   return (
     <li>
-      <img src={srcImg} alt={`${name}'s portrait`} />
+      {!srcImg.includes(null) ? (
+        <img src={srcImg} alt={`${name}'s portrait`} />
+      ) : (
+        <p>No image yet.</p>
+      )}
       <p>{name}</p>
       <p>Character: {character}</p>
     </li>
