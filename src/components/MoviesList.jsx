@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const MoviesList = ({ title, children }) => {
     return (
         <div>
-            <h2>{title}</h2>
+            <h2 style={{marginBottom: '10px'}}>{title}</h2>
             <ul>{children}</ul>
         </div>
     )
