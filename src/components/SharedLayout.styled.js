@@ -5,6 +5,8 @@ export const Container = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   padding: 10px;
+  border-bottom: 2px solid lightgrey;
+  box-shadow: 0px 6px 3px -2px rgba(0, 0, 0, 0.36);
 `;
 
 export const Header = styled.header`
@@ -13,7 +15,8 @@ export const Header = styled.header`
   align-items: center;
   margin-bottom: 20px;
   padding: 10px;
-  boder-bottom: 2px solid lightgrey;
+  border-bottom: 2px solid lightgrey;
+  box-shadow: 0px 6px 3px -2px rgba(0, 0, 0, 0.36);
   gap: 16px;
 `;
 

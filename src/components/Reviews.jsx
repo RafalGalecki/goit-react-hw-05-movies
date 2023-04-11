@@ -26,21 +26,21 @@ const Reviews = () => {
 
   return (
     <Container>
-      
-        <ul>
+      {reviews.length > 0 ?
+        (<ul>
           {reviews.map(element => {
             return (
             
-                <ReviewsElement
-                  key={element.id}
-                  author={element.author}
-                  content={element.content}
-                />
+              <ReviewsElement
+                key={element.id}
+                author={element.author}
+                content={element.content}
+              />
               
             );
           })}
-        </ul>
-     
+        </ul>) : (<p>There are no reviews</p>)
+      }
     </Container>
   );
 };

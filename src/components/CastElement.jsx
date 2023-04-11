@@ -1,6 +1,7 @@
 import React from 'react';
 
-const CastElement = ({ srcImg, name, character }) => {
+
+const CastElement = ({ id, srcImg, name, character }) => {
   return (
     <li>
       {!srcImg.includes(null) ? (

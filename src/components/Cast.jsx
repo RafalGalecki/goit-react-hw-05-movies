@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-
+import { nanoid } from 'nanoid';
 import { getMovieCast } from 'services/api';
 import CastElement from 'components/CastElement';
 import { Container } from './SharedLayout.styled';
@@ -34,7 +34,7 @@ const Cast = () => {
           {cast.map(element => {
             return (
               <CastElement
-                key={element.id}
+                key={element.id + nanoid()}
                 srcImg={element.srcImg}
                 name={element.name}
                 character={element.character}
