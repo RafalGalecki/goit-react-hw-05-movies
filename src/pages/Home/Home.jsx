@@ -11,7 +11,6 @@ const Home = () => {
   useEffect(() => {
     const fetchMovies = async () => {
       const response = await getTrendingMovies();
-      console.log('response', response);
       if (response !== null) {
         setMovies(response);
       } else {

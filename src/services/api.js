@@ -28,7 +28,6 @@ const getTrendingMovies = async () => {
   if (response === null) {
     return null;
   }
-  console.log('FULL RESPONSE', response);
   let movies = [];
   handleMoviesData(response.data.results, movies);
   return movies;

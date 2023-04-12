@@ -15,7 +15,6 @@ const Reviews = () => {
       const response = await getMovieReviews(id);
       if (response !== null) {
         setReviews(response);
-        console.log('REVIEWS', response);
       } else {
         setReviews([]);
       }
