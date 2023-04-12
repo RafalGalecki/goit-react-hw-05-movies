@@ -1,12 +1,14 @@
 import React from 'react';
 import Markdown from 'marked-react';
+import { ReviewLi } from './ReviewsElement.styled';
 
 const ReviewsElement = ({ author, content }) => {
   return (
-    <li>
+    <ReviewLi>
       <h4>Author: {author}</h4>
-      <Markdown>{content}</Markdown>
-    </li>
+        <Markdown>{content}</Markdown>
+      
+    </ReviewLi>
   );
 };
 

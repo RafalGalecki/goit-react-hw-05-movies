@@ -47,7 +47,7 @@ export const Link = styled(NavLink)`
 
   &:hover,
   &:focus {
-    color: blue;
+    color: red;
   }
   &:not(:hover, :focus) {
     ${({ active }) => activeNav(active)}

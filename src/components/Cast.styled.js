@@ -5,7 +5,7 @@ display: flex;
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
-  row-gap: 12px;
+  row-gap: 18px;
   column-gap: 12px;
   margin-top: 12px;
   margin-left: auto;

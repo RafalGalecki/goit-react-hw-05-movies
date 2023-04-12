@@ -30,7 +30,7 @@ const MovieDetails = () => {
         className={[css.movie__link]}
         to={location.state ? location.state.from : '/'}
       >
-        &lt; Go back
+        &#10094; Go back
       </Link>
       {movieDetails && (
         <>
@@ -46,18 +46,21 @@ const MovieDetails = () => {
               )}
             </div>
             <div className={[css.movie__desc]}>
-              <h3>
-                {movieDetails.title} ({movieDetails.releaseDate})
-              </h3>
+              <h2 className={[css.movie__title]}>
+                {movieDetails.title}{' '}
+                <span className={[css.movie__score]}>
+                  ({movieDetails.releaseDate})
+                </span>
+              </h2>
               <h4 className={[css.movie__score]}>
                 User score: {Math.round(movieDetails.voteAverage * 10)}% /
                 Votes: {movieDetails.voteCount}
               </h4>
-              <div>
+              <div className={[css.movie__paragraph]}>
                 <h4>Overview</h4>
                 <p>{movieDetails.overview}</p>
               </div>
-              <div>
+              <div className={[css.movie__paragraph]}>
                 <h4>Genres</h4>
                 <ul className={[css.movie__genres]}>
                   {movieDetails.genres.map(element => (
@@ -69,12 +72,16 @@ const MovieDetails = () => {
           </div>
           <div className={[css.movie__additions]}>
             <h5>Additional information</h5>
-            <ul>
+            <ul className={[css.additions__list]}>
               <li>
-                <Link to="cast">Cast</Link>
+                <Link className={[css.additions__item]} to="cast">
+                  &#10139; Cast
+                </Link>
               </li>
               <li>
-                <Link to="reviews">Reviews</Link>
+                <Link className={[css.additions__item]} to="reviews">
+                  &#10139; Reviews
+                </Link>
               </li>
             </ul>
           </div>
