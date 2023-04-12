@@ -22,21 +22,33 @@ export const Role = styled.div`
 `;
 
 export const CastGridItem = styled.li`
-  flex-basis: calc((100% - 15px * 5) / 6);
+  flex-basis: calc((100% - 15px) * 1 / 2);
+
   display: flex;
   flex-direction: column;
+  @media screen and (min-width: 340px) {
+    flex-basis: calc((100% - 15px * 2) / 3);
+  }
   @media screen and (min-width: 480px) {
+    flex-basis: calc((100% - 15px * 3) / 4);
+  }
+  @media screen and (min-width: 620px) {
+    flex-basis: calc((100% - 15px * 4) / 5);
   }
   @media screen and (min-width: 768px) {
+    flex-basis: calc((100% - 15px * 5) / 6);
+  }
+  @media screen and (min-width: 968px) {
+    flex-basis: calc((100% - 15px * 6) / 7);
   }
   @media screen and (min-width: 1140px) {
+    flex-basis: calc((100% - 15px * 7) / 8);
   }
 `;
 export const Placeholder = styled.div`
   display: flex;
   height: 100%;
-  background-color: #aaaaaa;
-  color: white;
+  color: #aaaaaa;
   justify-content: center;
   align-items: center;
 `;

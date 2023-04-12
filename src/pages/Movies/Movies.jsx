@@ -10,7 +10,7 @@ const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [filter, setFilter] = useState(searchParams.get('query'));
   const location = useLocation();
-  const [isMovie, setIsMovie] = useState(false);
+  const [isMovie, setIsMovie] = useState(null);
 
   const searcher = filter => {
     if (filter) {
@@ -19,28 +19,33 @@ const Movies = () => {
   };
 
   useEffect(() => {
-    setSearchParams({ query: filter });
-    const getMovies = async () => {
-      const response = await getQueryMovies(filter);
-      console.log('RES', response);
-      if (response !== null) {
-        setMovies(response);
-        setIsMovie(true);
-      }
-      if (response.length === 0) {
-        setIsMovie(false);
-        console.log('ZERO');
-      }
-    };
-    getMovies();
+    if (filter) {
+      setSearchParams({ query: filter });
+      const getMovies = async () => {
+        const response = await getQueryMovies(filter);
+        console.log('RES', response);
+        if (response !== null) {
+          setMovies(response);
+          setIsMovie(true);
+        }
+        if (response.length === 0) {
+          setIsMovie(false);
+          console.log('ZERO');
+        }
+      };
+      getMovies();
+    }
   }, [filter, setSearchParams]);
 
   return (
     <main>
       <Searchbar filter={filter} searcher={filter => searcher(filter)} />
-      {!isMovie && <div>
-        <h4>Search The Movie DataBase for movies</h4>
-      </div>}
+
+      {isMovie === null ? (
+        <div>
+          <h4>Search The Movie DataBase for movies</h4>
+        </div>
+      ) : isMovie ? (
         <MoviesList>
           {movies &&
             movies.map(({ movieId, movieTitle }) => (
@@ -53,7 +58,11 @@ const Movies = () => {
               />
             ))}
         </MoviesList>
-      
+      ) : (
+        <div>
+          <p>No results</p>
+        </div>
+      )}
     </main>
   );
 };
