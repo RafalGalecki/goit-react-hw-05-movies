@@ -3,6 +3,7 @@ import { Suspense } from 'react';
 import { Container, Header, Nav, Link } from './SharedLayout.styled';
 import Loader from './Loader/Loader';
 import ScrollButton from './ScrollButton';
+import Switch from 'react-switch';
 
 export const SharedLayout = () => {
   const location = useLocation();
@@ -20,6 +21,10 @@ export const SharedLayout = () => {
             Movies
           </Link>
         </Nav>
+        <label>
+          <span>Day/Night mode</span>
+          <Switch />
+        </label>
       </Header>
       <Suspense fallback={<Loader />}>
         <Outlet />
