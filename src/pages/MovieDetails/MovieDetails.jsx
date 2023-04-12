@@ -16,7 +16,6 @@ const MovieDetails = () => {
       const response = await getMovieDetails(id);
       if (response !== null) {
         setMovieDetails(response);
-        console.log('Details', response);
       } else {
         setMovieDetails('');
       }

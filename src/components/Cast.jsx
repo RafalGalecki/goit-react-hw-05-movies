@@ -18,7 +18,6 @@ const Cast = () => {
       const response = await getMovieCast(id);
       if (response !== null) {
         setCast([...response]);
-        console.log('CAST', response);
       } else {
         setCast([]);
       }

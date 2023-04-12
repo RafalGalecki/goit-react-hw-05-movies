@@ -33,9 +33,9 @@ const activeNav = active => {
     case 'on':
       return 'color: orange';
     case 'off':
-      return 'color: black';
+      return 'color: grey';
     default:
-      return 'color: black'
+      return 'color: grey'
   }
 };
 
@@ -56,4 +56,13 @@ export const Link = styled(NavLink)`
   nav &:focus {
     color: red;
   }
+`;
+
+export const SwitchLabel = styled.label`
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+gap: 6px;
+
 `;

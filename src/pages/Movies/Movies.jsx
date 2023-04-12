@@ -23,14 +23,12 @@ const Movies = () => {
       setSearchParams({ query: filter });
       const getMovies = async () => {
         const response = await getQueryMovies(filter);
-        console.log('RES', response);
         if (response !== null) {
           setMovies(response);
           setIsMovie(true);
         }
         if (response.length === 0) {
           setIsMovie(false);
-          console.log('ZERO');
         }
       };
       getMovies();

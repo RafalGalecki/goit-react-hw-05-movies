@@ -11,4 +11,6 @@ export const MovieLi = styled.li`
   &:focus {
     transform: scale(0.996);
   }
+
+  
 `;
