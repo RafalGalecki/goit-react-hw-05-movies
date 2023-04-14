@@ -56,6 +56,9 @@ const MovieDetails = () => {
               </h4>
               <div className={[css.movie__paragraph]}>
                 <h4>Overview</h4>
+                {movieDetails.tagline && (
+                  <p>&#10077; {movieDetails.tagline} &#10078;</p>
+                )}
                 <p>{movieDetails.overview}</p>
               </div>
               <div className={[css.movie__paragraph]}>
@@ -110,6 +113,15 @@ const MovieDetails = () => {
                   state={{ from: location.state.from }}
                 >
                   &#10139; Crew
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className={[css.additions__item]}
+                  to="similar"
+                  state={{ from: location.state.from }}
+                >
+                  &#10139; Similar movies &#128521;
                 </Link>
               </li>
             </ul>

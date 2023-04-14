@@ -5,7 +5,7 @@
   margin-bottom: 15px;
 }
 .movie__poster > img {
-  width: 70vw;
+  width: 50vw;
   min-width: 200px;
   height: auto;
   box-shadow: 0px 6px 3px -2px rgba(0, 0, 0, 0.36);
@@ -20,6 +20,7 @@
 .movie__desc {
   display: flex;
   flex-direction: column;
+  /* justify-content: space-between; */
   padding-left: 15px;
   gap: 20px;
 }
@@ -51,6 +52,7 @@
   font-size: 18px;
   font-weight: 500;
 }
+
 
 .movie__homepage:hover,
 .movie__homepage:focus {

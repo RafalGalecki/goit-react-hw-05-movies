@@ -68,6 +68,7 @@ const getMovieDetails = async id => {
     overview,
     genres,
     homepage,
+    tagline,
   } = response.data;
   const movieDetails = {
     posterPath: 'https://image.tmdb.org/t/p/w300' + poster_path,
@@ -78,6 +79,7 @@ const getMovieDetails = async id => {
     overview,
     genres,
     homepage,
+    tagline
   };
   console.log('details', response);
   return movieDetails;
@@ -135,6 +137,25 @@ const getMovieReviews = async id => {
   return reviews;
 };
 
+const getMovieSimilar = async id => {
+  const response = await fetchTMDB(`/movie/${id}/similar`);
+  if (response === null) {
+    return null;
+  }
+  let similar = [];
+  console.log('SIMILAR', response);
+  response.data.results.forEach(element => {
+    const { id, poster_path, title, release_date } = element;
+    return similar.push({
+      id,
+      srcImg: 'https://image.tmdb.org/t/p/w200' + poster_path,
+      title,
+      releaseDate: `${new Date(release_date).getFullYear()}`,
+    });
+  });
+  return similar;
+};
+
 export {
   getTrendingMovies,
   getQueryMovies,
@@ -142,4 +163,5 @@ export {
   getMovieCast,
   getMovieCrew,
   getMovieReviews,
+  getMovieSimilar,
 };
