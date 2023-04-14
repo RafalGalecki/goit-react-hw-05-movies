@@ -4,7 +4,8 @@ import { nanoid } from 'nanoid';
 import { getMovieCast } from 'services/api';
 import CastElement from 'components/CastElement';
 import { Container } from './SharedLayout.styled';
-import { CastGrid} from './Cast.styled'
+import { CastGrid } from './Cast.styled'
+
 
 
 const Cast = () => {
