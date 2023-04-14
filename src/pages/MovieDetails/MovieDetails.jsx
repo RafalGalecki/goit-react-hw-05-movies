@@ -66,6 +66,20 @@ const MovieDetails = () => {
                   ))}
                 </ul>
               </div>
+              {movieDetails.homepage && (
+                <div className={[css.movie__paragraph]}>
+                  <h4>Homepage</h4>
+
+                  <a
+                    className={[css.movie__homepage]}
+                    href={movieDetails.homepage}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    &#10139; {movieDetails.homepage}
+                  </a>
+                </div>
+              )}
             </div>
           </div>
           <div className={[css.movie__additions]}>
