@@ -16,6 +16,7 @@ const fetchTMDB = async (urlPath, myParams) => {
       },
     })
     .then(response => {
+      console.log('FULL Response:', response);
       return response;
     })
     .catch(error => {
@@ -58,8 +59,15 @@ const getMovieDetails = async id => {
   if (response === null) {
     return null;
   }
-  const { poster_path, title, release_date, vote_average, vote_count, overview, genres } =
-    response.data;
+  const {
+    poster_path,
+    title,
+    release_date,
+    vote_average,
+    vote_count,
+    overview,
+    genres,
+  } = response.data;
   const movieDetails = {
     posterPath: 'https://image.tmdb.org/t/p/w300' + poster_path,
     title,
@@ -69,6 +77,7 @@ const getMovieDetails = async id => {
     overview,
     genres,
   };
+  console.log('details', response);
   return movieDetails;
 };
 
@@ -78,6 +87,7 @@ const getMovieCast = async id => {
     return null;
   }
   let cast = [];
+  console.log('CAST', response);
   response.data.cast.forEach(element => {
     const { id, profile_path, name, character } = element;
     return cast.push({
@@ -88,6 +98,26 @@ const getMovieCast = async id => {
     });
   });
   return cast;
+};
+
+const getMovieCrew = async id => {
+  const response = await fetchTMDB(`/movie/${id}/credits`);
+  if (response === null) {
+    return null;
+  }
+  let crew = [];
+  console.log('Crew', response);
+  response.data.crew.forEach(element => {
+    const { id, profile_path, name, department, job } = element;
+    return crew.push({
+      id,
+      srcImg: 'https://image.tmdb.org/t/p/w200' + profile_path,
+      name,
+      department,
+      job,
+    });
+  });
+  return crew;
 };
 
 const getMovieReviews = async id => {
@@ -108,5 +138,6 @@ export {
   getQueryMovies,
   getMovieDetails,
   getMovieCast,
+  getMovieCrew,
   getMovieReviews,
 };
