@@ -89,6 +89,15 @@ const MovieDetails = () => {
                   &#10139; Reviews
                 </Link>
               </li>
+              <li>
+                <Link
+                  className={[css.additions__item]}
+                  to="crew"
+                  state={{ from: location.state.from }}
+                >
+                  &#10139; Crew
+                </Link>
+              </li>
             </ul>
           </div>
         </>
