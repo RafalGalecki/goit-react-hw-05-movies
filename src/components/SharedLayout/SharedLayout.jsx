@@ -38,7 +38,7 @@ export const SharedLayout = () => {
             </Link>
           </Nav>
           <SwitchLabel>
-            {theme === 'light' ? <span>&#9728;</span> : <span>&#9789;</span>}
+            {theme === 'light' ? <span>&#9789;</span> : <span>&#9728;</span>}
             <Switch
               onChange={toggleTheme}
               checked={theme === 'dark'}
