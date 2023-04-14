@@ -67,6 +67,7 @@ const getMovieDetails = async id => {
     vote_count,
     overview,
     genres,
+    homepage,
   } = response.data;
   const movieDetails = {
     posterPath: 'https://image.tmdb.org/t/p/w300' + poster_path,
@@ -76,6 +77,7 @@ const getMovieDetails = async id => {
     voteCount: vote_count,
     overview,
     genres,
+    homepage,
   };
   console.log('details', response);
   return movieDetails;
