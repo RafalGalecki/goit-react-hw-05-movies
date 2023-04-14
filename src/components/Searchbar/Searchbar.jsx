@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import {Form, Input, Button} from './Searchbar.styled'
+import { Form, Input, Button } from './Searchbar.styled';
 
 const Searchbar = ({ searcher }) => {
   const [filter, setFilter] = useState('');

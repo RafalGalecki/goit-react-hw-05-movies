@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { getTrendingMovies } from 'services/api';
-import MoviesList from 'components/MoviesList';
-import MoviesListElement from 'components/MoviesListElement';
+import MoviesList from 'components/MoviesList/MoviesList';
+import MoviesListElement from 'components/MoviesListElement/MoviesListElement';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);

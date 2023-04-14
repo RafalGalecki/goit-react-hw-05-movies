@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from './SharedLayout.styled';
+import { Link } from '../SharedLayout/SharedLayout.styled';
 import { MovieLi } from './MoviesListElement.styled';
 
 const MoviesListElement = ({ movieId, movieTitle, to, from }) => {

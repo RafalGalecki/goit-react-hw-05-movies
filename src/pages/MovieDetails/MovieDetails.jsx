@@ -2,7 +2,7 @@ import { useEffect, useState, Suspense } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 import { getMovieDetails } from 'services/api';
-import { Link } from '../../components/SharedLayout.styled';
+import { Link } from '../../components/SharedLayout/SharedLayout.styled';
 import Loader from '../../components/Loader/Loader';
 import css from './MovieDetails.module.css';
 

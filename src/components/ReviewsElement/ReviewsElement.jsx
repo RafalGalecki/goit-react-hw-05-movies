@@ -6,8 +6,7 @@ const ReviewsElement = ({ author, content }) => {
   return (
     <ReviewLi>
       <h4>Author: {author}</h4>
-        <Markdown>{content}</Markdown>
-      
+      <Markdown>{content}</Markdown>
     </ReviewLi>
   );
 };

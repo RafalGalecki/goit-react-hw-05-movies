@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams, useLocation } from 'react-router-dom';
-import Searchbar from 'components/Searchbar';
-import MoviesList from 'components/MoviesList';
-import MoviesListElement from 'components/MoviesListElement';
+import Searchbar from 'components/Searchbar/Searchbar';
+import MoviesList from 'components/MoviesList/MoviesList';
+import MoviesListElement from 'components/MoviesListElement/MoviesListElement';
 import { getQueryMovies } from 'services/api';
 
 const Movies = () => {

@@ -1,5 +1,10 @@
 import React from 'react';
-import { Portrait, Role, CastGridItem, Placeholder } from './CastElement.styled';
+import {
+  Portrait,
+  Role,
+  CastGridItem,
+  Placeholder,
+} from './CastElement.styled';
 
 const CastElement = ({ id, srcImg, name, character }) => {
   return (

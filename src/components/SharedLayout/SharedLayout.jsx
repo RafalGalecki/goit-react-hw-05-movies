@@ -1,9 +1,15 @@
 import { Outlet, useLocation } from 'react-router-dom';
 import { createContext, useState } from 'react';
 import { Suspense } from 'react';
-import { Container, Header, Nav, Link, SwitchLabel } from './SharedLayout.styled';
-import Loader from './Loader/Loader';
-import ScrollButton from './ScrollButton';
+import {
+  Container,
+  Header,
+  Nav,
+  Link,
+  SwitchLabel,
+} from './SharedLayout.styled';
+import Loader from '../Loader/Loader';
+import ScrollButton from '../ScrollButton/ScrollButton';
 import Switch from 'react-switch';
 
 export const ThemeContext = createContext(null);
