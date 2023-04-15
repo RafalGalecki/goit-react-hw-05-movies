@@ -5,6 +5,7 @@ import { getMovieDetails } from 'services/api';
 import { Link } from '../../components/SharedLayout/SharedLayout.styled';
 import Loader from '../../components/Loader/Loader';
 import css from './MovieDetails.module.css';
+import MovieDetailsCard from 'components/MovieDetailsCard/MovieDetailsCard';
 
 const MovieDetails = () => {
   const [movieDetails, setMovieDetails] = useState(null);
