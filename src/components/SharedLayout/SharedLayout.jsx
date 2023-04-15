@@ -45,6 +45,8 @@ export const SharedLayout = () => {
               onColor="#ffa500"
               height={16}
               width={30}
+              uncheckedIcon={false}
+              checkedIcon={false}
             />
           </SwitchLabel>
         </Header>
