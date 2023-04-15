@@ -6,6 +6,7 @@ import { Link } from '../../components/SharedLayout/SharedLayout.styled';
 import Loader from '../../components/Loader/Loader';
 import css from './MovieDetails.module.css';
 import MovieDetailsCard from 'components/MovieDetailsCard/MovieDetailsCard';
+import MovieDetailsAdditionalInfo from 'components/MovieDetailsAdditionalInfo/MovieDetailsAdditionalInfo';
 
 const MovieDetails = () => {
   const [movieDetails, setMovieDetails] = useState(null);
@@ -44,47 +45,9 @@ const MovieDetails = () => {
             genres={movieDetails.genres}
             homepage={movieDetails.homepage}
           />
-          <div className={[css.movie__additions]}>
-            <h5>Additional information</h5>
-            <ul className={[css.additions__list]}>
-              <li>
-                <Link
-                  className={[css.additions__item]}
-                  to="cast"
-                  state={{ from: location.state.from }}
-                >
-                  &#10139; Cast
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className={[css.additions__item]}
-                  to="reviews"
-                  state={{ from: location.state.from }}
-                >
-                  &#10139; Reviews
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className={[css.additions__item]}
-                  to="crew"
-                  state={{ from: location.state.from }}
-                >
-                  &#10139; Crew
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className={[css.additions__item]}
-                  to="similar"
-                  state={{ from: location.state.from }}
-                >
-                  &#10139; Similar movies &#128521;
-                </Link>
-              </li>
-            </ul>
-          </div>
+          <MovieDetailsAdditionalInfo
+            fromLocation={{ from: location.state.from }} />
+          
         </>
       )}
       <Suspense fallback={<Loader />}>
