@@ -1,5 +1,5 @@
 import React from 'react';
-import css from './MovieDetailsCard.styled.css';
+import css from './MovieDetailsCard.module.css';
 
 const MovieDetailsCard = ({
   posterPath,
