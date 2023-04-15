@@ -5,6 +5,7 @@ import { getMovieDetails } from 'services/api';
 import { Link } from '../../components/SharedLayout/SharedLayout.styled';
 import Loader from '../../components/Loader/Loader';
 import css from './MovieDetails.module.css';
+import MovieDetailsCard from 'components/MovieDetailsCard/MovieDetailsCard';
 
 const MovieDetails = () => {
   const [movieDetails, setMovieDetails] = useState(null);
@@ -32,59 +33,17 @@ const MovieDetails = () => {
       </Link>
       {movieDetails && (
         <>
-          <div className={[css.movie__card]}>
-            <div className={[css.movie__poster]}>
-              {!movieDetails.posterPath.includes(null) ? (
-                <img
-                  src={movieDetails.posterPath}
-                  alt={`${movieDetails.title}'s poster`}
-                />
-              ) : (
-                <p>No poster yet.</p>
-              )}
-            </div>
-            <div className={[css.movie__desc]}>
-              <h2 className={[css.movie__title]}>
-                {movieDetails.title}{' '}
-                <span className={[css.movie__score]}>
-                  ({movieDetails.releaseDate})
-                </span>
-              </h2>
-              <h4 className={[css.movie__score]}>
-                User score: {Math.round(movieDetails.voteAverage * 10)}% /
-                Votes: {movieDetails.voteCount}
-              </h4>
-              <div className={[css.movie__paragraph]}>
-                <h4>Overview</h4>
-                {movieDetails.tagline && (
-                  <p>&#10077; {movieDetails.tagline} &#10078;</p>
-                )}
-                <p>{movieDetails.overview}</p>
-              </div>
-              <div className={[css.movie__paragraph]}>
-                <h4>Genres</h4>
-                <ul className={[css.movie__genres]}>
-                  {movieDetails.genres.map(element => (
-                    <li key={element.id}>{element.name}</li>
-                  ))}
-                </ul>
-              </div>
-              {movieDetails.homepage && (
-                <div className={[css.movie__paragraph]}>
-                  <h4>Homepage</h4>
-
-                  <a
-                    className={[css.movie__homepage]}
-                    href={movieDetails.homepage}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    &#10139; {movieDetails.homepage}
-                  </a>
-                </div>
-              )}
-            </div>
-          </div>
+          <MovieDetailsCard
+            posterPath={movieDetails.posterPath}
+            title={movieDetails.title}
+            releaseDate={movieDetails.releaseDate}
+            voteAverage={movieDetails.voteAverage}
+            voteCount={movieDetails.voteCount}
+            tagline={movieDetails.tagline}
+            overview={movieDetails.overview}
+            genres={movieDetails.genres}
+            homepage={movieDetails.homepage}
+          />
           <div className={[css.movie__additions]}>
             <h5>Additional information</h5>
             <ul className={[css.additions__list]}>
