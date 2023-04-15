@@ -31,6 +31,7 @@ const getTrendingMovies = async () => {
   }
   let movies = [];
   handleMoviesData(response.data.results, movies);
+  console.log('Trending', response)
   return movies;
 };
 
