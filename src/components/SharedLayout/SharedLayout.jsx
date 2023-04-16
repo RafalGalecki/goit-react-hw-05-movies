@@ -6,11 +6,10 @@ import {
   Header,
   Nav,
   Link,
-  SwitchLabel,
+  ToggleThemeButton,
 } from './SharedLayout.styled';
 import Loader from '../Loader/Loader';
 import ScrollButton from '../ScrollButton/ScrollButton';
-import Switch from 'react-switch';
 
 export const ThemeContext = createContext(null);
 
@@ -37,18 +36,11 @@ export const SharedLayout = () => {
               Movies
             </Link>
           </Nav>
-          <SwitchLabel>
+          
+          <ToggleThemeButton type="button" onClick={toggleTheme}>
             {theme === 'light' ? <span>&#9789;</span> : <span>&#9728;</span>}
-            <Switch
-              onChange={toggleTheme}
-              checked={theme === 'dark'}
-              onColor="#ffa500"
-              height={16}
-              width={30}
-              uncheckedIcon={false}
-              checkedIcon={false}
-            />
-          </SwitchLabel>
+          </ToggleThemeButton>
+          
         </Header>
         <Suspense fallback={<Loader />}>
           <Outlet />
