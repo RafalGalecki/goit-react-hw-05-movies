@@ -31,13 +31,17 @@ const getTrendingMovies = async () => {
   }
   let movies = [];
   handleMoviesData(response.data.results, movies);
-  console.log('Trending', response)
+  console.log('Trending', response);
   return movies;
 };
 
 const handleMoviesData = (response, movies) => {
   response.forEach(movie => {
-    return movies.push({ movieId: movie.id, movieTitle: movie.title });
+    return movies.push({
+      movieId: movie.id,
+      movieTitle: movie.title,
+      movieBackdrop: 'https://image.tmdb.org/t/p/w200' + movie.backdrop_path,
+    });
   });
 };
 
@@ -80,7 +84,7 @@ const getMovieDetails = async id => {
     overview,
     genres,
     homepage,
-    tagline
+    tagline,
   };
   console.log('details', response);
   return movieDetails;
@@ -157,6 +161,18 @@ const getMovieSimilar = async id => {
   return similar;
 };
 
+const getBestGenreforYear = async (genre, year) => {
+  const response = await fetchTMDB(
+    `/discover/movie?with_genres=${genre}&primary_release_year=${year}`
+  );
+  if (response === null) {
+    return null;
+  }
+  let movies = [];
+  handleMoviesData(response.data.results, movies);
+  return movies;
+};
+
 export {
   getTrendingMovies,
   getQueryMovies,
@@ -165,4 +181,5 @@ export {
   getMovieCrew,
   getMovieReviews,
   getMovieSimilar,
+  getBestGenreforYear,
 };
