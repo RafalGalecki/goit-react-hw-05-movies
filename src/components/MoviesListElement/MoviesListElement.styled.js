@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export const MovieLi = styled.li`
+  display: flex;
+  flex-direction: row;
   font-weight: 500;
   padding: 2px;
   transition-property: transform;
@@ -11,6 +13,5 @@ export const MovieLi = styled.li`
   &:focus {
     transform: scale(0.996);
   }
-
-  
 `;
+
