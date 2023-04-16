@@ -3,20 +3,23 @@ import {
   Portrait,
   Role,
   CastGridItem,
-  Placeholder,
 } from './CastElement.styled';
+import css from './CastElement.module.css'
+import placeholderPortrait from '../../images/placeholderPortrait.jpg';
 
 const CastElement = ({ id, srcImg, name, character }) => {
+  //const placeholder = !srcImg.includes(null) ? srcImg : placeholderPortrait;
   return (
-    <CastGridItem>
+    <CastGridItem key={id}>
       {!srcImg.includes(null) ? (
         <Portrait>
           <img src={srcImg} alt={`${name}'s portrait`} />
         </Portrait>
       ) : (
-        <Placeholder>
-          <p>No image yet.</p>
-        </Placeholder>
+        <div className={css.thumb}>
+          <img className={css.image} src={placeholderPortrait} alt="placeholder" />
+          <p className={css.label}>No image yet</p>
+        </div>
       )}
       <Role>
         <p>{name}</p>

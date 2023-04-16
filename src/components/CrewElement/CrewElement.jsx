@@ -3,8 +3,9 @@ import {
   Portrait,
   Role,
   CastGridItem,
-  Placeholder,
 } from '../CastElement/CastElement.styled';
+import css from '../CastElement/CastElement.module.css'
+import placeholderPortrait from '../../images/placeholderPortrait.jpg';
 
 const CrewElement = ({ id, srcImg, name, department, job }) => {
   return (
@@ -14,9 +15,14 @@ const CrewElement = ({ id, srcImg, name, department, job }) => {
           <img src={srcImg} alt={`${name}'s portrait`} />
         </Portrait>
       ) : (
-        <Placeholder>
-          <p>No image yet.</p>
-        </Placeholder>
+        <div className={css.thumb}>
+          <img
+            className={css.image}
+            src={placeholderPortrait}
+            alt="placeholder"
+          />
+          <p className={css.label}>No image yet</p>
+        </div>
       )}
       <Role>
         <p>{name}</p>

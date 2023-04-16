@@ -47,10 +47,3 @@ export const CastGridItem = styled.li`
     flex-basis: calc((100% - 15px * 7) / 8);
   }
 `;
-export const Placeholder = styled.div`
-  display: flex;
-  height: 100%;
-  color: #aaaaaa;
-  justify-content: center;
-  align-items: center;
-`;
