@@ -14,6 +14,8 @@
   text-transform: uppercase;
   text-align: center;
   background-color: rgba(0, 0, 0, 0.46);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
   margin: 0;
 }
 .thumb > .label {
