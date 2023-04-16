@@ -35,7 +35,7 @@ const activeNav = active => {
     case 'off':
       return 'color: grey';
     default:
-      return 'color: grey'
+      return 'color: grey';
   }
 };
 
@@ -59,10 +59,25 @@ export const Link = styled(NavLink)`
 `;
 
 export const SwitchLabel = styled.label`
-display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-gap: 6px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+`;
 
+export const ToggleThemeButton = styled.button`
+display: flex;
+justify-content: center;
+width: 23px;
+height: 23px;
+  background-color: orange;
+  border: 1px solid grey;
+  border-radius: 50px;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    background-color: red;
+  }
 `;
