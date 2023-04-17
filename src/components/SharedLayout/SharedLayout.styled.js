@@ -65,20 +65,3 @@ export const SwitchLabel = styled.label`
   align-items: center;
   gap: 6px;
 `;
-
-export const ToggleThemeButton = styled.button`
-display: flex;
-justify-content: center;
-font-size: 22px;
-font-weight: 600;
-  background-color: transparent;
-  color: orange;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-
-  &:hover,
-  &:focus {
-    color: red;
-  }
-`;
