@@ -161,13 +161,14 @@ const getMovieSimilar = async id => {
   return similar;
 };
 
-const getBestGenreforYear = async (genre, year) => {
+const getTheBestOfGenre = async (genre) => {
   const response = await fetchTMDB(
-    `/discover/movie?with_genres=${genre}&primary_release_year=${year}`
+    `/discover/movie?with_genres=${genre}&sort_by=vote_average.desc&vote_count.gte=10`
   );
   if (response === null) {
     return null;
   }
+  console.log('BEST res', response)
   let movies = [];
   handleMoviesData(response.data.results, movies);
   return movies;
@@ -181,5 +182,5 @@ export {
   getMovieCrew,
   getMovieReviews,
   getMovieSimilar,
-  getBestGenreforYear,
+  getTheBestOfGenre,
 };

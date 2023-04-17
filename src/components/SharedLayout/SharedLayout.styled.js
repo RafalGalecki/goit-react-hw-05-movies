@@ -69,15 +69,16 @@ export const SwitchLabel = styled.label`
 export const ToggleThemeButton = styled.button`
 display: flex;
 justify-content: center;
-width: 23px;
-height: 23px;
-  background-color: orange;
-  border: 1px solid grey;
+font-size: 22px;
+font-weight: 600;
+  background-color: transparent;
+  color: orange;
+  border: none;
   border-radius: 50px;
   cursor: pointer;
 
   &:hover,
   &:focus {
-    background-color: red;
+    color: red;
   }
 `;

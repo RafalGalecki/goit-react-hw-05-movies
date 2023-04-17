@@ -3,12 +3,14 @@ import { useSearchParams, useLocation } from 'react-router-dom';
 import Searchbar from 'components/Searchbar/Searchbar';
 import MoviesList from 'components/MoviesList/MoviesList';
 import MoviesListElement from 'components/MoviesListElement/MoviesListElement';
-import { getQueryMovies } from 'services/api';
+import { getQueryMovies, getTheBestOfGenre } from 'services/api';
+import MoviesFilter from 'components/MoviesFilter/MoviesFilter';
 
 const Movies = () => {
   const [movies, setMovies] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const [filter, setFilter] = useState(searchParams.get('query'));
+  const [genre, setGenre] = useState(null);
   const location = useLocation();
   const [isMovie, setIsMovie] = useState(null);
 
@@ -17,8 +19,24 @@ const Movies = () => {
       setFilter(filter);
     }
   };
-
+  const handleOnClick = event => {
+    setGenre(Number(event.target.value));
+    console.log('VAL', genre);
+  };
   useEffect(() => {
+    if (genre) {
+      const getGenreMovies = async () => {
+        const response = await getTheBestOfGenre(genre);
+        if (response !== null) {
+          setMovies(response);
+          setIsMovie(true);
+        }
+        if (response.length === 0) {
+          setIsMovie(false);
+        }
+      };
+      getGenreMovies();
+    }
     if (filter) {
       setSearchParams({ query: filter });
       const getMovies = async () => {
@@ -33,7 +51,7 @@ const Movies = () => {
       };
       getMovies();
     }
-  }, [filter, setSearchParams]);
+  }, [filter, genre, setSearchParams]);
 
   return (
     <main>
@@ -42,6 +60,7 @@ const Movies = () => {
       {isMovie === null ? (
         <div>
           <h4>Search The Movie DataBase for movies</h4>
+          <MoviesFilter onClick={handleOnClick} />
         </div>
       ) : isMovie ? (
         <MoviesList>

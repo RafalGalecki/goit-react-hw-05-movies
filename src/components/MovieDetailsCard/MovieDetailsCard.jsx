@@ -1,5 +1,6 @@
 import React from 'react';
 import css from './MovieDetailsCard.module.css';
+import placeholderPoster from '../../images/placeholderPortrait.jpg';
 
 const MovieDetailsCard = ({
   posterPath,
@@ -14,13 +15,21 @@ const MovieDetailsCard = ({
 }) => {
   return (
     <div className={[css.movie__card]}>
-      <div className={[css.movie__poster]}>
-        {!posterPath.includes(null) ? (
+      {!posterPath.includes(null) ? (
+        <div className={[css.movie__poster]}>
           <img src={posterPath} alt={`${title}'s poster`} />
-        ) : (
-          <p>No poster yet.</p>
-        )}
-      </div>
+        </div>
+      ) : (
+        <div className={css.thumb}>
+          <img
+            className={css.image}
+            src={placeholderPoster}
+            alt="placeholder"
+          />
+          <p className={css.label}>No poster yet</p>
+        </div>
+      )}
+
       <div className={[css.movie__desc]}>
         <div>
           <h2 className={[css.movie__title]}>
