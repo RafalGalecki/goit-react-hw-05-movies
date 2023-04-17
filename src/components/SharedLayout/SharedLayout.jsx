@@ -1,52 +1,57 @@
 import { Outlet, useLocation } from 'react-router-dom';
-import { createContext, useState } from 'react';
+import { ThemeProvider } from 'styled-components';
+import { lightTheme, darkTheme } from 'components/Themes/Themes';
 import { Suspense } from 'react';
-import {
-  Container,
-  Header,
-  Nav,
-  Link,
-  ToggleThemeButton,
-} from './SharedLayout.styled';
+import { Container, Header, Nav, Link } from './SharedLayout.styled';
 import Loader from '../Loader/Loader';
 import ScrollButton from '../ScrollButton/ScrollButton';
-
-export const ThemeContext = createContext(null);
+import { GlobalStyles } from 'components/Themes/globalStyles';
+import { useDarkMode } from 'components/Themes/useDarkMode';
+import ToggleThemeButton from 'components/Themes/ToggleThemeButton';
 
 export const SharedLayout = () => {
   const location = useLocation();
-  const [theme, setTheme] = useState('light');
+  const [theme, toggleTheme, mountedComponent] = useDarkMode();
 
-  const toggleTheme = () => {
-    setTheme(current => (current === 'light' ? 'dark' : 'light'));
-  };
+  const themeMode = theme === 'light' ? lightTheme : darkTheme;
 
+  if (!mountedComponent) return <div />;
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <Container id={theme}>
-        <Header>
-          <Nav>
-            <Link active={location.pathname === '/' ? 'on' : 'off'} to="/" end>
-              Home
-            </Link>
-            <Link
-              active={location.pathname.startsWith('/movies') ? 'on' : 'off'}
-              to="/movies"
+    <ThemeProvider theme={themeMode}>
+      <>
+        <GlobalStyles />
+        <Container>
+          <Header>
+            <Nav>
+              <Link
+                active={location.pathname === '/' ? 'on' : 'off'}
+                to="/"
+                end
+              >
+                Home
+              </Link>
+              <Link
+                active={location.pathname.startsWith('/movies') ? 'on' : 'off'}
+                to="/movies"
+              >
+                Movies
+              </Link>
+            </Nav>
+
+            <ToggleThemeButton
+              type="button"
+              theme={theme}
+              toggleTheme={toggleTheme}
             >
-              Movies
-            </Link>
-          </Nav>
-          
-          <ToggleThemeButton type="button" onClick={toggleTheme}>
-            {theme === 'light' ? <span>&#9789;</span> : <span>&#9728;</span>}
-          </ToggleThemeButton>
-          
-        </Header>
-        <Suspense fallback={<Loader />}>
-          <Outlet />
-        </Suspense>
-        <ScrollButton />
-      </Container>
-    </ThemeContext.Provider>
+              {theme === 'light' ? <span>&#9789;</span> : <span>&#9728;</span>}
+            </ToggleThemeButton>
+          </Header>
+          <Suspense fallback={<Loader />}>
+            <Outlet />
+          </Suspense>
+          <ScrollButton />
+        </Container>
+      </>
+    </ThemeProvider>
   );
 };
