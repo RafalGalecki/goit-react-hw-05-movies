@@ -49,8 +49,8 @@ export const SharedLayout = () => {
           <Suspense fallback={<Loader />}>
             <Outlet />
           </Suspense>
-          <ScrollButton />
         </Container>
+        <ScrollButton />
       </>
     </ThemeProvider>
   );
