@@ -65,7 +65,7 @@ const MovieDetailsCard = ({
               target="_blank"
               rel="noopener noreferrer"
             >
-              &#10139; {homepage}
+              {homepage}
             </a>
           </div>
         )}
