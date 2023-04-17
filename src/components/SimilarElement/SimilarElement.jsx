@@ -9,7 +9,7 @@ import placeholderPortrait from '../../images/placeholderPortrait.jpg';
 
 const SimilarElement = ({ id, srcImg, title, releaseDate }) => {
   return (
-    <CastGridItem>
+    <CastGridItem key={id}>
       {!srcImg.includes(null) ? (
         <Portrait>
           <img src={srcImg} alt={`${title} - this movie's poster`} />
