@@ -45,3 +45,25 @@
 .movie__homepage:focus {
   color: orange;
 }
+.thumb {
+  position: relative;
+  margin-bottom: 8px;
+}
+.label {
+  font-size: 24px;
+  padding: 4px 0;
+  color: white;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0;
+}
+.thumb > .label {
+  position: absolute;
+  top: 40%;
+  right: 0;
+  left: 0;
+}
+.image {
+  min-width: 200px;
+  border-radius: 8px;
+}
