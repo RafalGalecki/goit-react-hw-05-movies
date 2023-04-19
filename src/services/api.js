@@ -174,6 +174,20 @@ const getTheBestOfGenre = async (genre) => {
   return movies;
 };
 
+const getMoviesWithCast = async (castId) => {
+  const response = await fetchTMDB(
+    `/discover/movie?with_people=${castId}&sort_by=vote_average.desc`
+  );
+  if (response === null) {
+    return null;
+  }
+  console.log('Cast - movies res', response)
+  let movies = [];
+  handleMoviesData(response.data.results, movies);
+  return movies;
+};
+
+
 export {
   getTrendingMovies,
   getQueryMovies,
@@ -183,4 +197,5 @@ export {
   getMovieReviews,
   getMovieSimilar,
   getTheBestOfGenre,
+  getMoviesWithCast,
 };
