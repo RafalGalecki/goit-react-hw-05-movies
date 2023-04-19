@@ -4,6 +4,7 @@ import css from './MovieDetailsAdditionalInfo.module.css';
 
 const MovieDetailsAdditionalInfo = ({ fromLocation }) => {
   const infoLinkNames = ['cast', 'reviews', 'crew', 'similar'];
+  
 
   return (
     <div className={[css.movie__additions]}>

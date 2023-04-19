@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 import { getMovieSimilar } from 'services/api';
@@ -9,6 +9,11 @@ import { CastGrid } from '../Cast/Cast.styled';
 const Similar = () => {
   const [similar, setSimilar] = useState([]);
   const { id } = useParams();
+  const divRef = useRef(null);
+
+  useEffect(() => {
+    divRef.current.scrollIntoView({ behavior: 'smooth' });
+  });
 
   useEffect(() => {
     const getSimilar = async () => {
@@ -24,6 +29,7 @@ const Similar = () => {
 
   return (
     <Container>
+      <div ref={divRef} />
       {similar.length > 0 ? (
         <CastGrid>
           {similar.map(element => {

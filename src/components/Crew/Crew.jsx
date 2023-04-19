@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 import { getMovieCrew } from 'services/api';
@@ -9,6 +9,11 @@ import { CastGrid } from '../Cast/Cast.styled';
 const Crew = () => {
   const [crew, setCrew] = useState([]);
   const { id } = useParams();
+  const divRef = useRef(null);
+
+  useEffect(() => {
+    divRef.current.scrollIntoView({ behavior: 'smooth' });
+  });
 
   useEffect(() => {
     const getCrew = async () => {
@@ -24,6 +29,7 @@ const Crew = () => {
 
   return (
     <Container>
+      <div ref={divRef} />
       {crew.length > 0 ? (
         <CastGrid>
           {crew.map(element => {

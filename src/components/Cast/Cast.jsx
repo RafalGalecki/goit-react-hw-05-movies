@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 import { getMovieCast } from 'services/api';
@@ -9,6 +9,11 @@ import { CastGrid } from './Cast.styled';
 const Cast = () => {
   const [cast, setCast] = useState([]);
   const { id } = useParams();
+  const divRef = useRef(null);
+
+  useEffect(() => {
+    divRef.current.scrollIntoView({ behavior: 'smooth' });
+  });
 
   useEffect(() => {
     const getCast = async () => {
@@ -24,6 +29,7 @@ const Cast = () => {
 
   return (
     <Container>
+      <div ref={divRef} />
       {cast.length > 0 ? (
         <CastGrid>
           {cast.map(element => {
