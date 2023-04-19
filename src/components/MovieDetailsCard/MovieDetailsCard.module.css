@@ -19,10 +19,13 @@
   overflow: hidden;
   border-radius: 8px;
   box-shadow: 0px 6px 4px -2px rgba(0, 0, 0, 0.46);
+
 }
 
-.movie__poster:hover {
-animation: rotateY 400ms alternate ease-in-out;
+.movie__poster:hover,
+.movie__poster:focus {
+animation: rotateY 400ms ease-in-out;
+
 }
 @keyframes rotateY {
   0% {
@@ -50,7 +53,8 @@ animation: rotateY 400ms alternate ease-in-out;
   transition: 0.4s;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-.movie__poster:hover:before {
+.movie__poster:hover:before,
+.movie__poster:hover:focus {
   left: 460px;
 }
 .movie__title {
