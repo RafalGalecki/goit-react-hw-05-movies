@@ -43,7 +43,13 @@ export const SharedLayout = () => {
               theme={theme}
               toggleTheme={toggleTheme}
             >
-              {theme === 'light' ? <span>&#9789;</span> : <span>&#9728;</span>}
+              {theme === 'light' ? (
+                <span>
+                  <b>&#9789;</b>
+                </span>
+              ) : (
+                <span>&#9728;</span>
+              )}
             </ToggleThemeButton>
           </Header>
           <Suspense fallback={<Loader />}>

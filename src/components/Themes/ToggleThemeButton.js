@@ -5,13 +5,14 @@ import styled from 'styled-components';
 const Button = styled.button`
   display: flex;
   justify-content: center;
-  font-size: 22px;
-  font-weight: 600;
+  font-size: 26px;
+  font-weight: 400;
   background-color: transparent;
   color: orange;
   border: none;
   border-radius: 50px;
   cursor: pointer;
+
 
   &:hover,
   &:focus {

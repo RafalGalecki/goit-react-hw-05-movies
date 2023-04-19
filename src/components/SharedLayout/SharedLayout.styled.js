@@ -58,10 +58,3 @@ export const Link = styled(NavLink)`
   }
 `;
 
-export const SwitchLabel = styled.label`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 6px;
-`;
