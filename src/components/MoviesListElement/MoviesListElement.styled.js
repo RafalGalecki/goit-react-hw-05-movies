@@ -11,7 +11,7 @@ export const MovieLi = styled.li`
 
   &:hover,
   &:focus {
-    transform: scale(0.996);
+    transform: scale(1.03);
   }
 `;
 
