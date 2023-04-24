@@ -1,0 +1,25 @@
+.home,
+.movies {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  color: #ccc;
+}
+.home:before,
+.movies:before {
+  content: 'Home';
+  position: absolute;
+  color: red;
+  top: 0;
+  left: 0;
+  width: 0%;
+  overflow: hidden;
+  transition: all 0.5s;
+}
+.movies:before {
+  content: 'Movies';
+}
+.home:hover:before,
+.movies:hover:before {
+  width: 100%;
+}

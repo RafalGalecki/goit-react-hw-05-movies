@@ -64,7 +64,7 @@ const Movies = () => {
         </div>
       ) : isMovie ? (
         <MoviesList>
-          {movies &&
+          {!!movies &&
             movies.map(({ movieId, movieTitle, movieBackdrop }) => (
               <MoviesListElement
                 key={movieId}

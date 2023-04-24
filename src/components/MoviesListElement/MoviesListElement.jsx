@@ -16,10 +16,12 @@ const MoviesListElement = ({
     : placeholderBackdrop;
   return (
     <MovieLi key={movieId}>
-      <Link className={css.thumb} to={`${to}`} state={{ from: from }}>
-        <img className={css.backdrop} src={placeholder} alt={movieTitle} />
-        <p className={css.label}>{movieTitle}</p>
-      </Link>
+      <div style={{borderRadius: '8px'} } target="poster">
+        <Link className={css.thumb} to={`${to}`} state={{ from: from }}>
+          <img className={css.backdrop} src={placeholder} alt={movieTitle} />
+          <p className={css.label}>{movieTitle}</p>
+        </Link>
+      </div>
     </MovieLi>
   );
 };

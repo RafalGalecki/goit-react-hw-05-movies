@@ -32,7 +32,7 @@ const MovieDetails = () => {
       <Link className={[css.movie__link]} to={backLinkHref}>
         &#10094; Go back
       </Link>
-      {movieDetails && (
+      {!!movieDetails && (
         <>
           <MovieDetailsCard
             posterPath={movieDetails.posterPath}

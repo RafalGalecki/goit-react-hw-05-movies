@@ -22,7 +22,7 @@ const Home = () => {
   return (
     <main>
       <MoviesList title="Trending today">
-        {movies &&
+        {!!movies &&
           movies.map(({ movieId, movieTitle, movieBackdrop }) => (
             <MoviesListElement
               key={movieId}

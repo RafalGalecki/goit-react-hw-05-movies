@@ -16,8 +16,10 @@ const MovieDetailsCard = ({
   return (
     <div className={[css.movie__card]}>
       {!posterPath.includes(null) ? (
-        <div className={[css.movie__poster]}>
-          <img src={posterPath} alt={`${title}'s poster`} />
+        <div target="poster">
+          <div className={[css.movie__poster]}>
+            <img src={posterPath} alt={`${title}'s poster`} />
+          </div>
         </div>
       ) : (
         <div className={css.thumb}>
@@ -55,7 +57,7 @@ const MovieDetailsCard = ({
             ))}
           </ul>
         </div>
-        {homepage && (
+        {!!homepage && (
           <div className={[css.movie__paragraph]}>
             <h4>Homepage</h4>
 
