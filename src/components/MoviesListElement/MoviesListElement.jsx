@@ -16,7 +16,7 @@ const MoviesListElement = ({
     : placeholderBackdrop;
   return (
     <MovieLi key={movieId}>
-      <div style={{borderRadius: '8px'} } target="poster">
+      <div style={{ borderRadius: '8px' }} target="boxShadowDark">
         <Link className={css.thumb} to={`${to}`} state={{ from: from }}>
           <img className={css.backdrop} src={placeholder} alt={movieTitle} />
           <p className={css.label}>{movieTitle}</p>

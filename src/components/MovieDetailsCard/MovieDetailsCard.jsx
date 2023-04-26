@@ -16,7 +16,7 @@ const MovieDetailsCard = ({
   return (
     <div className={[css.movie__card]}>
       {!posterPath.includes(null) ? (
-        <div target="poster" style={{borderRadius: '8px'}}>
+        <div target="boxShadowDark" style={{ borderRadius: '8px' }}>
           <div className={[css.movie__poster]}>
             <img src={posterPath} alt={`${title}'s poster`} />
           </div>

@@ -7,7 +7,7 @@ export const GlobalStyles = createGlobalStyle`
     transition: all 0.50s linear;
   }
   img,
-  [target="poster"] {
+  [target="boxShadowDark"] {
     box-shadow: ${({ theme }) => theme.boxShadow};
   }
   
