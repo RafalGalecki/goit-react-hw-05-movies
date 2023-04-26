@@ -24,7 +24,7 @@
 
 .movie__poster:hover,
 .movie__poster:focus {
-animation: rotateY 400ms ease-in-out;
+animation: rotateY 300ms ease-in-out;
 
 }
 @keyframes rotateY {
@@ -33,7 +33,7 @@ animation: rotateY 400ms ease-in-out;
   }
 
   100% {
-    transform: rotateY(6deg);
+    transform: rotateY(12deg);
   }
 }
 .movie__poster > img {
